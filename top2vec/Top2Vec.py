@@ -2097,3 +2097,30 @@ class Top2Vec:
                       height=400,
                       background_color=background_color).generate_from_frequencies(word_score_dict))
         plt.title("Topic " + str(topic_num), loc='left', fontsize=25, pad=20)
+
+def get_documents(self, doc_ids)
+    """
+        Get the actual documents for a list of doc ids.
+
+        Parameters
+        ----------
+           doc_ids: List of str, int
+            A unique value per document that is used for referring to documents
+            in search results. If ids were not given to the model, the index of
+            each document in the model is the id.
+
+        Returns
+        -------
+        documents: array of str, shape(num_docs)
+            The documents in a list.
+
+            Will be an empty list if the documents were not saved
+
+        """
+    if self.documents is not None:       
+        # get document indexes from ids
+        doc_indexes = self._get_document_indexes(doc_ids)
+        documents = self.documents[doc_indexes]
+        return documents
+    else:
+        return []
