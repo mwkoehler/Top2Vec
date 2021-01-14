@@ -231,6 +231,7 @@ class Top2Vec:
         self.embedding_model_path = embedding_model_path
 
         if embedding_model == 'doc2vec':
+            logger.info('doc2vec...')
 
             # validate training inputs
             if speed == "rapid-learn":
@@ -291,9 +292,9 @@ class Top2Vec:
                 train_corpus = [TaggedDocument(self._tokenizer(
                     doc), [i]) for i, doc in enumerate(documents)]
                 logger.debug(f"train_corpus count = {len(train_corpus)}")
-                for taggeddoc in train_corpus:
-                    for word in taggeddoc.words:
-                        logger.debug(word)
+                # for taggeddoc in train_corpus:
+                #    for word in taggeddoc.words:
+                #        logger.debug(word)
                 doc2vec_args["documents"] = train_corpus
 
             logger.info('Creating joint document/word embedding')
